@@ -33,6 +33,7 @@ contract TokenVesting is OwnableUpgradeable {
   uint256 public vestingStart;
   uint256 public vestingCliff;
   uint256 public vestingDuration;
+  uint256 public releasedTotal;
 
   struct TokenAward {
     uint256 amount;
@@ -74,6 +75,8 @@ contract TokenVesting is OwnableUpgradeable {
     award.released += unreleased;
 
     targetToken.safeTransfer(beneficiary, unreleased);
+
+    releasedTotal += unreleased;
 
     emit Released(beneficiary, unreleased);
   }
@@ -145,7 +148,7 @@ contract TokenVesting is OwnableUpgradeable {
     bool revocable
   ) internal {
     TokenAward storage award = getTokenAwardStorage(beneficiary);
-    //require(award.amount == 0, "Cannot award twice"); 
+    //require(award.amount == 0, "Cannot award twice");
     award.amount += amount;
     //award.amount = amount;
     award.revocable = revocable;

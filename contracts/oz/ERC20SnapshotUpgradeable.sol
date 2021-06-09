@@ -101,8 +101,10 @@ abstract contract ERC20SnapshotUpgradeable is Initializable, ERC20Upgradeable {
     virtual
     returns (uint256)
   {
-    (bool snapshotted, uint256 value) =
-      _valueAt(snapshotId, _accountBalanceSnapshots[account]);
+    (bool snapshotted, uint256 value) = _valueAt(
+      snapshotId,
+      _accountBalanceSnapshots[account]
+    );
 
     return snapshotted ? value : balanceOf(account);
   }
@@ -116,8 +118,10 @@ abstract contract ERC20SnapshotUpgradeable is Initializable, ERC20Upgradeable {
     virtual
     returns (uint256)
   {
-    (bool snapshotted, uint256 value) =
-      _valueAt(snapshotId, _totalSupplySnapshots);
+    (bool snapshotted, uint256 value) = _valueAt(
+      snapshotId,
+      _totalSupplySnapshots
+    );
 
     return snapshotted ? value : totalSupply();
   }
