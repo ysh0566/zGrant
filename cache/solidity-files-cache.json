@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\AgusS\\Documents\\DEVELOPMENT\\Zer0\\ZGrant\\contracts\\oz\\ERC20PausableUpgradeable.sol": {
-      "lastModificationDate": 1623176961926,
-      "contentHash": "103eee58b71da3cbbeff3b8678b04151",
+      "lastModificationDate": 1623282321697,
+      "contentHash": "eda908b8ca1b835ae6921c01d33715e8",
       "sourceName": "contracts/oz/ERC20PausableUpgradeable.sol",
       "solcConfig": {
         "version": "0.8.3",
@@ -40,8 +40,8 @@
       ]
     },
     "C:\\Users\\AgusS\\Documents\\DEVELOPMENT\\Zer0\\ZGrant\\contracts\\oz\\ERC20Upgradeable.sol": {
-      "lastModificationDate": 1623176961930,
-      "contentHash": "3bbe582b92be14fa8469bb5877807c3e",
+      "lastModificationDate": 1623282322113,
+      "contentHash": "9e1a4b132f97fbfadd5546972576d09a",
       "sourceName": "contracts/oz/ERC20Upgradeable.sol",
       "solcConfig": {
         "version": "0.8.3",
@@ -219,8 +219,8 @@
       ]
     },
     "C:\\Users\\AgusS\\Documents\\DEVELOPMENT\\Zer0\\ZGrant\\contracts\\ZeroToken.sol": {
-      "lastModificationDate": 1623007388679,
-      "contentHash": "7ae5440b7d155f4115b1c41047d3b905",
+      "lastModificationDate": 1623282322399,
+      "contentHash": "985e660514bd59f49859941547c15fb5",
       "sourceName": "contracts/ZeroToken.sol",
       "solcConfig": {
         "version": "0.8.3",
@@ -258,8 +258,8 @@
       ]
     },
     "C:\\Users\\AgusS\\Documents\\DEVELOPMENT\\Zer0\\ZGrant\\contracts\\oz\\ERC20SnapshotUpgradeable.sol": {
-      "lastModificationDate": 1623176961927,
-      "contentHash": "444193c87de5375012eb9fedfab27a75",
+      "lastModificationDate": 1623282321959,
+      "contentHash": "488960fac4cbebda1a051ebb1f85ad75",
       "sourceName": "contracts/oz/ERC20SnapshotUpgradeable.sol",
       "solcConfig": {
         "version": "0.8.3",
@@ -438,8 +438,8 @@
       ]
     },
     "C:\\Users\\AgusS\\Documents\\DEVELOPMENT\\Zer0\\ZGrant\\contracts\\TokenVesting.sol": {
-      "lastModificationDate": 1623274572115,
-      "contentHash": "210114fe0ee430719dbed37a5ad541d5",
+      "lastModificationDate": 1623282322212,
+      "contentHash": "dfe82066a7e11b9bad14a5f8256b28d7",
       "sourceName": "contracts/TokenVesting.sol",
       "solcConfig": {
         "version": "0.8.3",
@@ -581,8 +581,8 @@
       ]
     },
     "C:\\Users\\AgusS\\Documents\\DEVELOPMENT\\Zer0\\ZGrant\\contracts\\TokenVestingController.sol": {
-      "lastModificationDate": 1623274731041,
-      "contentHash": "bbffe8ee383cf65a01799476d7362637",
+      "lastModificationDate": 1623283322967,
+      "contentHash": "224db3194ae75e29298ba108891e5c9e",
       "sourceName": "contracts/TokenVestingController.sol",
       "solcConfig": {
         "version": "0.8.3",

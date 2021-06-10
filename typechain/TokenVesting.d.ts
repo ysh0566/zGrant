@@ -26,6 +26,7 @@ interface TokenVestingInterface extends ethers.utils.Interface {
     "getVestedAmount(address)": FunctionFragment;
     "owner()": FunctionFragment;
     "release(address)": FunctionFragment;
+    "releasedTotal()": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "revoke(address)": FunctionFragment;
     "targetToken()": FunctionFragment;
@@ -46,6 +47,10 @@ interface TokenVestingInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(functionFragment: "release", values: [string]): string;
+  encodeFunctionData(
+    functionFragment: "releasedTotal",
+    values?: undefined
+  ): string;
   encodeFunctionData(
     functionFragment: "renounceOwnership",
     values?: undefined
@@ -83,6 +88,10 @@ interface TokenVestingInterface extends ethers.utils.Interface {
   ): Result;
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "release", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "releasedTotal",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(
     functionFragment: "renounceOwnership",
     data: BytesLike
@@ -195,6 +204,8 @@ export class TokenVesting extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
+    releasedTotal(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     renounceOwnership(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
@@ -247,6 +258,8 @@ export class TokenVesting extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  releasedTotal(overrides?: CallOverrides): Promise<BigNumber>;
+
   renounceOwnership(
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
@@ -295,6 +308,8 @@ export class TokenVesting extends BaseContract {
     owner(overrides?: CallOverrides): Promise<string>;
 
     release(beneficiary: string, overrides?: CallOverrides): Promise<void>;
+
+    releasedTotal(overrides?: CallOverrides): Promise<BigNumber>;
 
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
@@ -369,6 +384,8 @@ export class TokenVesting extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
+    releasedTotal(overrides?: CallOverrides): Promise<BigNumber>;
+
     renounceOwnership(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
@@ -414,6 +431,8 @@ export class TokenVesting extends BaseContract {
       beneficiary: string,
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
+
+    releasedTotal(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     renounceOwnership(
       overrides?: Overrides & { from?: string | Promise<string> }

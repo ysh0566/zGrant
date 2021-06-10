@@ -21,26 +21,23 @@ import { TypedEventFilter, TypedEvent, TypedListener } from "./commons";
 
 interface TokenVestingControllerInterface extends ethers.utils.Interface {
   functions: {
-    "alreadyGrantedTokens()": FunctionFragment;
     "awards(address)": FunctionFragment;
     "getReleasableAmount(address)": FunctionFragment;
     "getVestedAmount(address)": FunctionFragment;
     "grantTokens(address[],uint256[],bool[])": FunctionFragment;
     "owner()": FunctionFragment;
     "release(address)": FunctionFragment;
+    "releasedTotal()": FunctionFragment;
     "renounceOwnership()": FunctionFragment;
     "revoke(address)": FunctionFragment;
     "targetToken()": FunctionFragment;
+    "tokensToGrant()": FunctionFragment;
     "transferOwnership(address)": FunctionFragment;
     "vestingCliff()": FunctionFragment;
     "vestingDuration()": FunctionFragment;
     "vestingStart()": FunctionFragment;
   };
 
-  encodeFunctionData(
-    functionFragment: "alreadyGrantedTokens",
-    values?: undefined
-  ): string;
   encodeFunctionData(functionFragment: "awards", values: [string]): string;
   encodeFunctionData(
     functionFragment: "getReleasableAmount",
@@ -57,12 +54,20 @@ interface TokenVestingControllerInterface extends ethers.utils.Interface {
   encodeFunctionData(functionFragment: "owner", values?: undefined): string;
   encodeFunctionData(functionFragment: "release", values: [string]): string;
   encodeFunctionData(
+    functionFragment: "releasedTotal",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
     functionFragment: "renounceOwnership",
     values?: undefined
   ): string;
   encodeFunctionData(functionFragment: "revoke", values: [string]): string;
   encodeFunctionData(
     functionFragment: "targetToken",
+    values?: undefined
+  ): string;
+  encodeFunctionData(
+    functionFragment: "tokensToGrant",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -82,10 +87,6 @@ interface TokenVestingControllerInterface extends ethers.utils.Interface {
     values?: undefined
   ): string;
 
-  decodeFunctionResult(
-    functionFragment: "alreadyGrantedTokens",
-    data: BytesLike
-  ): Result;
   decodeFunctionResult(functionFragment: "awards", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "getReleasableAmount",
@@ -102,12 +103,20 @@ interface TokenVestingControllerInterface extends ethers.utils.Interface {
   decodeFunctionResult(functionFragment: "owner", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "release", data: BytesLike): Result;
   decodeFunctionResult(
+    functionFragment: "releasedTotal",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
     functionFragment: "renounceOwnership",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "revoke", data: BytesLike): Result;
   decodeFunctionResult(
     functionFragment: "targetToken",
+    data: BytesLike
+  ): Result;
+  decodeFunctionResult(
+    functionFragment: "tokensToGrant",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -184,8 +193,6 @@ export class TokenVestingController extends BaseContract {
   interface: TokenVestingControllerInterface;
 
   functions: {
-    alreadyGrantedTokens(overrides?: CallOverrides): Promise<[BigNumber]>;
-
     awards(
       arg0: string,
       overrides?: CallOverrides
@@ -222,6 +229,8 @@ export class TokenVestingController extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
 
+    releasedTotal(overrides?: CallOverrides): Promise<[BigNumber]>;
+
     renounceOwnership(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<ContractTransaction>;
@@ -232,6 +241,8 @@ export class TokenVestingController extends BaseContract {
     ): Promise<ContractTransaction>;
 
     targetToken(overrides?: CallOverrides): Promise<[string]>;
+
+    tokensToGrant(overrides?: CallOverrides): Promise<[BigNumber]>;
 
     transferOwnership(
       newOwner: string,
@@ -244,8 +255,6 @@ export class TokenVestingController extends BaseContract {
 
     vestingStart(overrides?: CallOverrides): Promise<[BigNumber]>;
   };
-
-  alreadyGrantedTokens(overrides?: CallOverrides): Promise<BigNumber>;
 
   awards(
     arg0: string,
@@ -283,6 +292,8 @@ export class TokenVestingController extends BaseContract {
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
 
+  releasedTotal(overrides?: CallOverrides): Promise<BigNumber>;
+
   renounceOwnership(
     overrides?: Overrides & { from?: string | Promise<string> }
   ): Promise<ContractTransaction>;
@@ -293,6 +304,8 @@ export class TokenVestingController extends BaseContract {
   ): Promise<ContractTransaction>;
 
   targetToken(overrides?: CallOverrides): Promise<string>;
+
+  tokensToGrant(overrides?: CallOverrides): Promise<BigNumber>;
 
   transferOwnership(
     newOwner: string,
@@ -306,8 +319,6 @@ export class TokenVestingController extends BaseContract {
   vestingStart(overrides?: CallOverrides): Promise<BigNumber>;
 
   callStatic: {
-    alreadyGrantedTokens(overrides?: CallOverrides): Promise<BigNumber>;
-
     awards(
       arg0: string,
       overrides?: CallOverrides
@@ -341,11 +352,15 @@ export class TokenVestingController extends BaseContract {
 
     release(beneficiary: string, overrides?: CallOverrides): Promise<void>;
 
+    releasedTotal(overrides?: CallOverrides): Promise<BigNumber>;
+
     renounceOwnership(overrides?: CallOverrides): Promise<void>;
 
     revoke(beneficiary: string, overrides?: CallOverrides): Promise<void>;
 
     targetToken(overrides?: CallOverrides): Promise<string>;
+
+    tokensToGrant(overrides?: CallOverrides): Promise<BigNumber>;
 
     transferOwnership(
       newOwner: string,
@@ -395,8 +410,6 @@ export class TokenVestingController extends BaseContract {
   };
 
   estimateGas: {
-    alreadyGrantedTokens(overrides?: CallOverrides): Promise<BigNumber>;
-
     awards(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
 
     getReleasableAmount(
@@ -423,6 +436,8 @@ export class TokenVestingController extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
 
+    releasedTotal(overrides?: CallOverrides): Promise<BigNumber>;
+
     renounceOwnership(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<BigNumber>;
@@ -433,6 +448,8 @@ export class TokenVestingController extends BaseContract {
     ): Promise<BigNumber>;
 
     targetToken(overrides?: CallOverrides): Promise<BigNumber>;
+
+    tokensToGrant(overrides?: CallOverrides): Promise<BigNumber>;
 
     transferOwnership(
       newOwner: string,
@@ -447,10 +464,6 @@ export class TokenVestingController extends BaseContract {
   };
 
   populateTransaction: {
-    alreadyGrantedTokens(
-      overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
     awards(
       arg0: string,
       overrides?: CallOverrides
@@ -480,6 +493,8 @@ export class TokenVestingController extends BaseContract {
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
 
+    releasedTotal(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
     renounceOwnership(
       overrides?: Overrides & { from?: string | Promise<string> }
     ): Promise<PopulatedTransaction>;
@@ -490,6 +505,8 @@ export class TokenVestingController extends BaseContract {
     ): Promise<PopulatedTransaction>;
 
     targetToken(overrides?: CallOverrides): Promise<PopulatedTransaction>;
+
+    tokensToGrant(overrides?: CallOverrides): Promise<PopulatedTransaction>;
 
     transferOwnership(
       newOwner: string,

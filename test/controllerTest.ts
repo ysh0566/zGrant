@@ -3,8 +3,6 @@ import { ethers } from "hardhat";
 
 import chai from "chai";
 import { solidity } from "ethereum-waffle";
-import "@nomiclabs/hardhat-web3";
-import Web3 from "web3";
 import * as fs from "fs";
 import {
   ZeroToken,
