@@ -71,7 +71,7 @@ describe("Test for token granting multiple times", () => {
 
     it("SUCCESS mints tokens for the contract", async () => {
       await token.mint(tvc.address, ethers.utils.parseEther("10000"));
-      expect(await token.balanceOf(tvc.address)).to.eq(
+      await expect(await token.balanceOf(tvc.address)).to.eq(
         ethers.utils.parseEther("10000")
       );
     });
@@ -83,7 +83,7 @@ describe("Test for token granting multiple times", () => {
         ethers.utils.parseEther("4000"),
       ];
       let revokesTx = [true, true, false];
-      expect(await tvc.grantTokens(addressTx, ammountTx, revokesTx)).to.be
+      await expect( tvc.grantTokens(addressTx, ammountTx, revokesTx)).to.be
         .reverted;
     });
     it("SUCCESS grant the tokens to the first 3 users", async () => {
@@ -94,7 +94,7 @@ describe("Test for token granting multiple times", () => {
         ethers.utils.parseEther("300"),
       ];
       let revokesTx = [true, true, false];
-      expect(await tvc.grantTokens(addressTx, ammountTx, revokesTx))
+       await expect (tvc.grantTokens(addressTx, ammountTx, revokesTx))
         .to.emit(tvc, "Awarded")
         .withArgs(user1address, ethers.utils.parseEther("300"), true);
     });
@@ -107,15 +107,15 @@ describe("Test for token granting multiple times", () => {
         ethers.utils.parseUnits("300.0", 18),
       ];
       let revokesTx = [true, true, false];
-      expect(await tvc.grantTokens(addressTx, ammountTx, revokesTx)).to.emit(
+      await expect (tvc.grantTokens(addressTx, ammountTx, revokesTx)).to.emit(
         tvc,
         "Awarded"
       );
     });
 
     it("SUCCESS revoke tokens to an revocable user", async () => {
-      expect(await tvc.revoke(user1address)).to.emit(tvc, "Revoked");
-      expect(await tvc.revoke(user2address)).to.emit(tvc, "Revoked");
+      await expect (tvc.revoke(user1address)).to.emit(tvc, "Revoked");
+      await expect (tvc.revoke(user2address)).to.emit(tvc, "Revoked");
     });
 
     it("FAILS without the correct balance after the first grant", async () => {
@@ -126,7 +126,7 @@ describe("Test for token granting multiple times", () => {
         ethers.utils.parseEther("300"),
       ];
       let revokesTx = [true, true, false, true, true, false];
-      expect(await tvc.grantTokens(addressTx, ammountTx, revokesTx)).to.be
+      await expect (tvc.grantTokens(addressTx, ammountTx, revokesTx)).to.be
         .reverted;
       // THIS LINE BROKES expect(await tvc.alreadyGrantedTokens).to.eq(ethers.utils.parseEther("600"));
     });
@@ -138,7 +138,7 @@ describe("Test for token granting multiple times", () => {
         ethers.utils.parseUnits("200.0", 18),
       ];
       let revokesTx = [true, true, false];
-      expect(await tvc.grantTokens(addressTx, ammountTx, revokesTx)).to.be
+      await expect (tvc.grantTokens(addressTx, ammountTx, revokesTx)).to.be
         .reverted;
     });
 
@@ -150,21 +150,21 @@ describe("Test for token granting multiple times", () => {
         ethers.utils.parseUnits("300.0", 18),
       ];
       let revokesTx = [true, true, true];
-      expect(await tvc.grantTokens(addressTx, ammountTx, revokesTx)).to.be
+      await expect (tvc.grantTokens(addressTx, ammountTx, revokesTx)).to.be
         .reverted;
     });
 
     it("FAILS cant revoke tokens to an already revoked user", async () => {
-      expect(await tvc.revoke(user1address)).to.be.reverted;
-      expect(await tvc.revoke(user2address)).to.to.be.reverted;
+      await expect (tvc.revoke(user1address)).to.be.reverted;
+      await expect ( tvc.revoke(user2address)).to.to.be.reverted;
     });
 
     it("FAILS trying to revoke tokens to an unrevocable user", async () => {
-      expect(await tvc.revoke(user3address)).to.be.reverted;
+      await expect (tvc.revoke(user3address)).to.be.reverted;
     });
 
     it("FAILS to release tokens for user1 if releseable = 0", async () => {
-      expect(await tvc.release(user1address)).to.emit(tvc, "Released");
+      await expect (tvc.release(user1address)).to.be.reverted;
     });
   });
 });
