@@ -438,8 +438,8 @@
       ]
     },
     "C:\\Users\\AgusS\\Documents\\DEVELOPMENT\\Zer0\\Grant\\contracts\\TokenVesting.sol": {
-      "lastModificationDate": 1623450059323,
-      "contentHash": "dfe82066a7e11b9bad14a5f8256b28d7",
+      "lastModificationDate": 1623653255503,
+      "contentHash": "b63c04d994c47f77bad61e2a5bad4533",
       "sourceName": "contracts/TokenVesting.sol",
       "solcConfig": {
         "version": "0.8.3",
@@ -581,8 +581,8 @@
       ]
     },
     "C:\\Users\\AgusS\\Documents\\DEVELOPMENT\\Zer0\\Grant\\contracts\\TokenVestingController.sol": {
-      "lastModificationDate": 1623450059408,
-      "contentHash": "224db3194ae75e29298ba108891e5c9e",
+      "lastModificationDate": 1623705492775,
+      "contentHash": "2bb30a36297c790661048259225a7649",
       "sourceName": "contracts/TokenVestingController.sol",
       "solcConfig": {
         "version": "0.8.3",

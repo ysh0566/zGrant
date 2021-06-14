@@ -36,7 +36,7 @@ contract TokenVestingController is TokenVesting {
 
     require(
       actualBalance - unavailableTokens >= actualToGrant,
-      "you cant grant more than you actually have available to grant"
+      "You cant grant more than available"
     );
     TokenAward storage award;
     for (uint256 i = 0; i < awardsAmount.length; i++) {

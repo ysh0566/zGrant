@@ -20,6 +20,7 @@
     "lint:ts": "eslint . --ext .ts"
   },
   "author": "",
+  "type": "module",
   "license": "MIT",
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.2",
