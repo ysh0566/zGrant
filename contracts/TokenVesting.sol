@@ -148,11 +148,8 @@ contract TokenVesting is OwnableUpgradeable {
     bool revocable
   ) internal {
     TokenAward storage award = getTokenAwardStorage(beneficiary);
-    //require(award.amount == 0, "Cannot award twice");
     award.amount += amount;
-    //award.amount = amount;
     award.revocable = revocable;
-
     emit Awarded(beneficiary, amount, revocable);
   }
 
