@@ -15,7 +15,7 @@ import path from "path";
 import fs from "fs";
 
 const chainIds = {
-  ganache: 1337,
+  ganache: 5777,
   goerli: 5,
   hardhat: 31337,
   kovan: 42,
